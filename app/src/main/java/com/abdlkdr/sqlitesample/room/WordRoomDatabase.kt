@@ -18,9 +18,14 @@ abstract class WordRoomDatabase : RoomDatabase() {
 
     // Create Singleton Database to prevent having multiple instances of the database opened at the same time
     companion object {
+        @Volatile
         private var INSTANCE: WordRoomDatabase? = null
-        fun getDatabase(context: Context) {
-            return (INSTANCE ?: synchronized(this) {
+        fun getDatabase(
+            context: Context
+        ): WordRoomDatabase {
+            // if the INSTANCE is not null, then return it,
+            // if it is, then create the database
+            return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WordRoomDatabase::class.java,
@@ -31,9 +36,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
                     .build()
                 INSTANCE = instance
                 instance
-            }) as Unit
+            }
         }
     }
-
-
 }

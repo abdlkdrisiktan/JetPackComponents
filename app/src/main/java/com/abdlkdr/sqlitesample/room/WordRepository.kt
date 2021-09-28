@@ -8,8 +8,6 @@ import kotlinx.coroutines.flow.Flow
  */
 class WordRepository(private val wordDao: WordDao) {
 
-    val allWordsById : Flow<List<Word>> = wordDao.getWordsById()
-
     val allWords: Flow<List<Word>> = wordDao.getAlphabetizedWords()
 
     // Room executes suspend queries off the main thread.
@@ -19,8 +17,8 @@ class WordRepository(private val wordDao: WordDao) {
     }
 
     @WorkerThread
-    suspend fun deleteData(id : Int) {
-        wordDao.delete(id = id)
+    suspend fun deleteData(word: Word) {
+        wordDao.delete(word = word)
     }
 
     @WorkerThread

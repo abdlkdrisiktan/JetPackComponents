@@ -15,14 +15,14 @@ interface WordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(word: Word)
 
-    @Query("SELECT * FROM word_table ORDER BY id DESC")
-    fun getWordsById() : Flow<List<Word>>
+//    @Query("SELECT * FROM word_table ORDER BY id DESC")
+//    fun getWordsById() : Flow<List<Word>>
 
     @Query("DELETE FROM word_table")
     suspend fun deleteAll()
 
     @Delete(entity = Word::class)
-    suspend fun delete(id : Int)
+    suspend fun delete(word: Word)
 
     @Update(entity = Word::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(newWord: Word)
