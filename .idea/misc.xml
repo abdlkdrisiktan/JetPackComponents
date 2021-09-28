@@ -3,12 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19934143870314083" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3845425610646541" />
+        <entry key="app/src/main/res/layout/activity_new_word.xml" value="0.18977963270699236" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.19934143870314083" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.19934143870314083" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.19934143870314083" />
+        <entry key="app/src/main/res/layout/word_recyclerview_item.xml" value="0.11388888888888889" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.234375" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="androidx.room.Entity" />
+    </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
