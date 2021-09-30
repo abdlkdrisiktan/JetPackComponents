@@ -26,4 +26,7 @@ interface WordDao {
 
     @Update(entity = Word::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(newWord: Word)
+
+    @Query("SELECT * FROM word_table WHERE word LIKE :query")
+    fun findByWordName(query : String) : Flow<List<Word>>
 }

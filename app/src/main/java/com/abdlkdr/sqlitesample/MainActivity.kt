@@ -16,6 +16,7 @@ import com.abdlkdr.sqlitesample.room.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 
 class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
 
@@ -47,6 +48,9 @@ class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
         wordViewModel.allWords.observe(this, { words ->
             words?.let { adapter.submitList(words) }
         })
+        wordViewModel.searchWord.observe(this, { words ->
+            words?.let { adapter.submitList(words) }
+        })
     }
 
     private fun bindView() {
@@ -66,6 +70,22 @@ class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
+        val searchView: SearchView = menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query.isNullOrEmpty()) {
+                    return true
+                }
+                wordViewModel.findByWord(query)
+
+                return false
+            }
+        })
+
         return true
     }
 

@@ -8,6 +8,8 @@ import kotlinx.coroutines.launch
  */
 class WordViewModel(private val repository: WordRepository) : ViewModel() {
 
+    val searchWord: MutableLiveData<List<Word>> = MutableLiveData<List<Word>>()
+
     val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
 
     fun insert(word: Word) = viewModelScope.launch { repository.insertData(word = word) }
@@ -18,6 +20,10 @@ class WordViewModel(private val repository: WordRepository) : ViewModel() {
 
     fun updateData(word: Word) = viewModelScope.launch { repository.updateData(word = word) }
 
+    fun findByWord(word: String) {
+        val value =  repository.findByWord(query = word).asLiveData()
+        searchWord.value = value.value
+    }
 }
 
 class WordViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {

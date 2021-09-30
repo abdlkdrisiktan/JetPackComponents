@@ -30,4 +30,9 @@ class WordRepository(private val wordDao: WordDao) {
     suspend fun deleteAll(){
         wordDao.deleteAll()
     }
+
+    @WorkerThread
+    fun findByWord(query : String) : Flow<List<Word>> {
+        return wordDao.findByWordName(query = query)
+    }
 }
