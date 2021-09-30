@@ -19,8 +19,12 @@ class NewWordActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_word)
-        val oldWord : Word = intent.extras?.getSerializable(MainActivity.UPDATE_WORD) as Word
-        val isUpdateActivity = oldWord.word.isNotEmpty()
+        lateinit var oldWord: Word
+        var isUpdateActivity = false
+        intent.extras?.let {
+            oldWord = it.getSerializable(MainActivity.UPDATE_WORD) as Word
+            isUpdateActivity = oldWord.word.isNotEmpty()
+        }
         editWordView = findViewById(R.id.edit_word)
 
         val button = findViewById<Button>(R.id.button_save)
