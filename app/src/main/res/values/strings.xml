@@ -18,4 +18,5 @@
   <string name="word_updated">Word updated.</string>
   <string name="button_delete_all">Delete All</string>
   <string name="delete_word_snack_bar_title">Do you want to delete \"%1$s\" data from database ?</string>
+  <string name="button_search">Search</string>
 </resources>
