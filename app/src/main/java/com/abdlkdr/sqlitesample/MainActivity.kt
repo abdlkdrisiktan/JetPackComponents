@@ -108,15 +108,15 @@ class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(view: View, position: Int, word: Word) {
-        val snackBar : Snackbar = Snackbar.make(
+        val snackBar: Snackbar = Snackbar.make(
             view,
             String.format(getString(R.string.delete_word_snack_bar_title), word.word),
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.button_delete)) {
             deleteSelectedWord(word = word)
         }
-        val snackBarView : View = snackBar.view
-        val textView : TextView = snackBarView.findViewById(R.id.snackbar_text)
+        val snackBarView: View = snackBar.view
+        val textView: TextView = snackBarView.findViewById(R.id.snackbar_text)
         textView.maxLines = 5
         snackBar.show()
     }
